@@ -179,3 +179,12 @@ inline void BinaryTree::inordeTree_TreeNode1()
     cout << "¶þ²æÅÅÐòÊ÷£º" << endl;
     inordeTree(TreeNode1);
 }
+
+inline void BinaryTree::DeleteTreeNode()
+{
+
+}
+inline void BinaryTree::DeleteTreeNode_TreeNode1()
+{
+
+}
