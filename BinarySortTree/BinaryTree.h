@@ -34,6 +34,15 @@ public:
 	void inordeTree(TreeNode*);
 	void inordeTree_TreeNode1();
 	//
+	TreeNode* TreeClone(TreeNode*);
+	void TreeClonde_TreeNode1_V(TreeNode*);
+	//
+	void TreeFind(TreeNode*, int);
+	void TreeFind_TreeNode(int);
+	//
+	void DeleteTreeNode();
+	void DeleteTreeNode_TreeNode1();
+	//
 	int getSomeRandNumberBetweenZeroAndMaxData();
 
 };

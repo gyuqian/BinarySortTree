@@ -44,6 +44,11 @@ inline void BinaryTree::GetMaxDataAndDataCountFromKeyboard()
 {
     cout << "Please input \"Datacount\" and \"MaxData\"" << ":" << endl;
     cin >> DataCount >> MaxData;
+    if (DataCount < 0 || DataCount>20 || MaxData < 50 || MaxData>100)
+    {
+        cout << "Error Input" << endl;
+        GetMaxDataAndDataCountFromKeyboard();
+    }
 }
 
 inline TreeNode* BinaryTree::insertNode(TreeNode* TreeNodeinsert, int a)
@@ -120,6 +125,53 @@ inline void	BinaryTree::inordeTree(TreeNode* Tree)
         cout << Tree->getRoot() << "  ";
         inordeTree(Tree->right);
     }
+}
+
+inline TreeNode* BinaryTree::TreeClone(TreeNode* rootNode)
+{
+    if (rootNode == NULL) {
+        return NULL;
+    }
+    TreeNode* new_node = NULL;
+    new_node = new TreeNode;
+    new_node->changeRoot(rootNode->root);
+    new_node->left = TreeClone(rootNode->left);
+    new_node->right = TreeClone(rootNode->right);
+
+    return new_node;
+}
+
+inline void BinaryTree::TreeClonde_TreeNode1_V(TreeNode* rootNode)
+{
+    TreeNode1 = TreeClone(rootNode);
+}
+
+inline void BinaryTree::TreeFind(TreeNode* TreeNodefound, int to_find)
+{
+    if (TreeNodefound == NULL)
+    {
+        cout << "Not Found" << endl;
+    }
+    else
+    {
+        if (TreeNodefound->getRoot() == to_find)
+        {
+            cout << "Found" << TreeNodefound << endl;
+        }
+        else if (TreeNodefound->getRoot() > to_find)
+        {
+            TreeFind(TreeNodefound->left, to_find);
+        }
+        else
+        {
+            TreeFind(TreeNodefound->right, to_find);
+        }
+    }
+}
+
+inline void BinaryTree::TreeFind_TreeNode(int to_find)
+{
+    TreeFind(TreeNode1, to_find);
 }
 
 inline void BinaryTree::inordeTree_TreeNode1()
