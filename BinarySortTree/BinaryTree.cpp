@@ -42,7 +42,7 @@ inline void BinaryTree::GetMaxDataAndDataCount(int data, int max)
 
 inline void BinaryTree::GetMaxDataAndDataCountFromKeyboard()
 {
-    cout << "Please input \"Datacount\" and \"MaxData\"" << ":" << endl;
+    cout << "Please input \"DataCount\"(0<DataCount<=20) and \"MaxData\"(50<=MaxData<=100)" << ":" << endl;
     cin >> DataCount >> MaxData;
     if (DataCount < 0 || DataCount>20 || MaxData < 50 || MaxData>100)
     {
