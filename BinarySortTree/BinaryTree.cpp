@@ -63,7 +63,16 @@ inline void BinaryTree::GetMaxDataAndDataCountFromKeyboard()
 inline void BinaryTree::GetDataCountFromKeyBoard()
 {
     cout << "Please input \"DataCount\"(0<DataCount<=20)" << endl;
+    
     cin >> DataCount;
+    if (cin.fail()==1)
+    {
+        cout << "Error Input" << endl;
+        cin.sync();
+        cin.clear();
+        cin.ignore();
+        GetDataCountFromKeyBoard();
+    }
     if (DataCount <0 || DataCount > 20)
     {
         cout << "Error Input" << endl;
@@ -75,6 +84,14 @@ inline void BinaryTree::GetMaxDataFromKeyBoard()
 {
     cout << "Please input \"MaxData\"(50<=MaxData<=100)" << endl;
     cin >> MaxData;
+    if (cin.fail() == 1)
+    {
+        cout << "Error Input" << endl;
+        cin.sync();
+        cin.clear();
+        cin.ignore();
+        GetMaxDataFromKeyBoard();
+    }
     if (MaxData < 50 || MaxData>100)
     {
         cout << "Error Input" << endl;

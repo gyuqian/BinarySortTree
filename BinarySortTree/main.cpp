@@ -14,9 +14,9 @@ int main(void)
     Tree1.getTreeHigh_TreeNode1();
     Tree1.outTreeLeaf_TreeNode1();
     Tree1.inordeTree_TreeNode1();
-    int to_find;
-    cin >> to_find;
-    Tree1.TreeFind_TreeNode(to_find);
+    //int to_find;
+    //cin >> to_find;
+    //Tree1.TreeFind_TreeNode(to_find);
     //
 
     //Tree1_Clone.TreeClonde_TreeNode1_V(Tree1.TreeNode1);
