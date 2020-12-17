@@ -4,6 +4,11 @@
 
 using namespace std;
 
+/******************************************************
+ * Author : gyuqian
+ * Date   : 2020/12/16
+ * Func   : 析构函数，初始化二叉树类中变量的初始值
+ ******************************************************/
 inline BinaryTree::BinaryTree()
 {
     numberNodeCount = 0;
@@ -14,42 +19,83 @@ inline BinaryTree::BinaryTree()
     high = 0;
 }
 
+/******************************************************
+ * Author   : gyuqian
+ * Date      : 2020/12/16
+ * Func      : 生成一个随机数，数值范围为 0~MaxData
+ * input      : Nothing
+ * output    : int
+ ******************************************************/
 inline int BinaryTree::getARandNumberBetweenZeroAndMaxData()
 {
-    return rand() % MaxData;
+    return rand() % MaxData;    //生成随机数，数值范围0~MaxData
 }
 
+/******************************************************
+* Author    :gyuqian
+* Data       :2020/12/16
+* Func       :生成随机数列并输出，
+                  同时使用随机数列创建二叉排序树
+* input       :NO INPUT
+* output     :NO OUTPUT
+*******************************************************/
 inline void BinaryTree::getRandRootData_creetTree()
 {
-    int i;
-    int randnumber;
+    int i;    //定义局部循环变量
+    int randnumber;   //随机数缓存变量
 
-    cout << "随机序列：" << endl;
+    cout << "Random Sequence:" << endl;    //输出提示
+
+    //
+    //循环过程，生成DataCount个随机数列，同时创建二叉排序树
+    //
     for (i = 0; i < DataCount; i++)
     {
-        randnumber= getARandNumberBetweenZeroAndMaxData();
-        TreeNode* TreeNodeReturn;
-        TreeNodeReturn = TreeFind(TreeRootNode, randnumber);
+        randnumber= getARandNumberBetweenZeroAndMaxData();   //生成随机数
+        TreeNode* TreeNodeReturn;    //定义局部变量，用于存储随机数在二叉排序树中的查找结果
+        TreeNodeReturn = TreeFind(TreeRootNode, randnumber);    //查询生成的随机数是否在二叉树中
+        //
+        //生成不重复的随机数
         while (TreeNodeReturn != NULL)
         {
             randnumber = getARandNumberBetweenZeroAndMaxData();
             TreeNodeReturn = TreeFind(TreeRootNode, randnumber);
         }
-        delete TreeNodeReturn;
+        delete TreeNodeReturn;    //释放局部变量的内存
+
+        //输出产生的随机数
         cout << randnumber << " ";
+        //将生成的随机数插入二叉排序树
         TreeRootNode = insertNode(TreeRootNode, randnumber);
     }
     cout << endl;
 }
 
+/******************************************************
+* Author    :gyuqian
+* Data       :2020/12/16
+* Func       :程序内变量赋值
+* input       :data 用于赋值DataCount
+*               :max 用于赋值MaxData
+* output     :NO OUTPUT
+*******************************************************/
 inline void BinaryTree::GetMaxDataAndDataCount(int data, int max)
 {
-    DataCount = data;
-    MaxData = max;
+    DataCount = data;    //赋值DataCount
+    MaxData = max;    //赋值MaxData
 }
 
+/******************************************************
+* Author    :gyuqian
+* Data       :2020/12/16
+* Func       :从键盘读取数据，对变量赋值
+* input       :From Keyboard
+* output     :NO OUTPUT
+*******************************************************/
 inline void BinaryTree::GetMaxDataAndDataCountFromKeyboard()
 {
+    GetDataCountFromKeyBoard();    //获取生成随机数列的数据个数
+    GetMaxDataFromKeyBoard();    //获取生成随机数列数据的最大值
     /*cout << "Please input \"DataCount\"(0<DataCount<=20) and \"MaxData\"(50<=MaxData<=100)" << ":" << endl;
     cin >> DataCount >> MaxData;
     if (DataCount < 0 || DataCount>20 || MaxData < 50 || MaxData>100)
@@ -57,8 +103,6 @@ inline void BinaryTree::GetMaxDataAndDataCountFromKeyboard()
         cout << "Error Input" << endl;
         GetMaxDataAndDataCountFromKeyboard();
     }*/
-    GetDataCountFromKeyBoard();
-    GetMaxDataFromKeyBoard();
 }
 
 inline void BinaryTree::GetDataCountFromKeyBoard()
@@ -282,7 +326,7 @@ inline void BinaryTree::TreeFind_TreeRootNode(int to_find)
     }
     else
     {
-        cout << "Found" << "地址：" << TreeNodereturn << "值：" << TreeNodereturn->getRoot() << endl;
+        cout << "Found " << "Address：" << TreeNodereturn << "value：" << TreeNodereturn->getRoot() << endl;
     }
 
     delete TreeNodereturn;
