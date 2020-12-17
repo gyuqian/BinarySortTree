@@ -10,7 +10,7 @@ inline BinaryTree::BinaryTree()
     DataCount = 0;
     MaxData = 0;
     rootdata = NULL;
-    TreeNode1 = NULL;
+    TreeRootNode = NULL;
     high = 0;
 }
 
@@ -28,8 +28,15 @@ inline void BinaryTree::getRandRootData_creetTree()
     for (i = 0; i < DataCount; i++)
     {
         randnumber= getSomeRandNumberBetweenZeroAndMaxData();
+        TreeNode* TreeNodeReturn;
+        TreeNodeReturn = TreeFind(TreeRootNode, randnumber);
+        while (TreeNodeReturn != NULL)
+        {
+            randnumber = getSomeRandNumberBetweenZeroAndMaxData();
+            TreeNodeReturn = TreeFind(TreeRootNode, randnumber);
+        }
         cout << randnumber << " ";
-            TreeNode1 = insertNode(TreeNode1, randnumber);
+        TreeRootNode = insertNode(TreeRootNode, randnumber);
     }
     cout << endl;
 }
@@ -42,12 +49,36 @@ inline void BinaryTree::GetMaxDataAndDataCount(int data, int max)
 
 inline void BinaryTree::GetMaxDataAndDataCountFromKeyboard()
 {
-    cout << "Please input \"DataCount\"(0<DataCount<=20) and \"MaxData\"(50<=MaxData<=100)" << ":" << endl;
+    /*cout << "Please input \"DataCount\"(0<DataCount<=20) and \"MaxData\"(50<=MaxData<=100)" << ":" << endl;
     cin >> DataCount >> MaxData;
     if (DataCount < 0 || DataCount>20 || MaxData < 50 || MaxData>100)
     {
         cout << "Error Input" << endl;
         GetMaxDataAndDataCountFromKeyboard();
+    }*/
+    GetDataCountFromKeyBoard();
+    GetMaxDataFromKeyBoard();
+}
+
+inline void BinaryTree::GetDataCountFromKeyBoard()
+{
+    cout << "Please input \"DataCount\"(0<DataCount<=20)" << endl;
+    cin >> DataCount;
+    if (DataCount <0 || DataCount > 20)
+    {
+        cout << "Error Input" << endl;
+        GetDataCountFromKeyBoard();
+    }
+}
+
+inline void BinaryTree::GetMaxDataFromKeyBoard()
+{
+    cout << "Please input \"MaxData\"(50<=MaxData<=100)" << endl;
+    cin >> MaxData;
+    if (MaxData < 50 || MaxData>100)
+    {
+        cout << "Error Input" << endl;
+        GetMaxDataFromKeyBoard();
     }
 }
 
@@ -90,7 +121,7 @@ inline void BinaryTree::getTreeHigh(TreeNode* Tree, int& high)
 
 inline void BinaryTree::getTreeHigh_TreeNode1()
 {
-    getTreeHigh(TreeNode1, high);
+    getTreeHigh(TreeRootNode, high);
     cout << "树高：" << high << endl;
 }
 
@@ -114,7 +145,7 @@ inline void BinaryTree::outTreeLeaf(TreeNode* Tree)
 inline void BinaryTree::outTreeLeaf_TreeNode1()
 {
     cout << "叶子：" << endl;
-    outTreeLeaf(TreeNode1);
+    outTreeLeaf(TreeRootNode);
 }
 
 inline void	BinaryTree::inordeTree(TreeNode* Tree)
@@ -143,20 +174,20 @@ inline TreeNode* BinaryTree::TreeClone(TreeNode* rootNode)
 
 inline void BinaryTree::TreeClonde_TreeNode1_V(TreeNode* rootNode)
 {
-    TreeNode1 = TreeClone(rootNode);
+    TreeRootNode = TreeClone(rootNode);
 }
 
-inline void BinaryTree::TreeFind(TreeNode* TreeNodefound, int to_find)
+inline TreeNode* BinaryTree::TreeFind(TreeNode* TreeNodefound, int to_find)
 {
     if (TreeNodefound == NULL)
     {
-        cout << "Not Found" << endl;
+        return TreeNodefound;
     }
     else
     {
         if (TreeNodefound->getRoot() == to_find)
         {
-            cout << "Found" << TreeNodefound << endl;
+            return TreeNodefound;
         }
         else if (TreeNodefound->getRoot() > to_find)
         {
@@ -171,13 +202,24 @@ inline void BinaryTree::TreeFind(TreeNode* TreeNodefound, int to_find)
 
 inline void BinaryTree::TreeFind_TreeNode(int to_find)
 {
-    TreeFind(TreeNode1, to_find);
+    TreeNode* TreeNodereturn;
+    TreeNodereturn = new TreeNode;
+    TreeNodereturn=TreeFind(TreeRootNode, to_find);
+    if (TreeNodereturn == NULL)
+    {
+        cout << "Not Found" << endl;
+    }
+    else
+    {
+        cout << "Found" << "地址：" << TreeNodereturn << "值：" << TreeNodereturn->getRoot() << endl;
+    }
 }
 
 inline void BinaryTree::inordeTree_TreeNode1()
 {
     cout << "二叉排序树：" << endl;
-    inordeTree(TreeNode1);
+    inordeTree(TreeRootNode);
+    cout << endl;
 }
 
 inline void BinaryTree::DeleteTreeNode()

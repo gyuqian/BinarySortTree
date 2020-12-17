@@ -5,7 +5,7 @@ class BinaryTree
 	//公有数据
 	//
 public:
-	TreeNode* TreeNode1;
+	TreeNode* TreeRootNode;
 	//BinaryTree* Tree;
 	int MaxData;
 	int DataCount;
@@ -20,6 +20,8 @@ public:
 	void GetMaxDataAndDataCount(int, int);
 	//
 	void GetMaxDataAndDataCountFromKeyboard();
+	void GetMaxDataFromKeyBoard();
+	void GetDataCountFromKeyBoard();
 	//
 	void getRandRootData_creetTree();//获取datacount个随机数
 	//
@@ -37,7 +39,7 @@ public:
 	TreeNode* TreeClone(TreeNode*);//未完成实验二
 	void TreeClonde_TreeNode1_V(TreeNode*);
 	//
-	void TreeFind(TreeNode*, int);
+	TreeNode* TreeFind(TreeNode*, int);
 	void TreeFind_TreeNode(int);
 	//
 	void DeleteTreeNode();
