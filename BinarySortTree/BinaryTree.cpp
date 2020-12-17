@@ -1,5 +1,5 @@
+#pragma once
 #include "BinaryTree.h"
-#include "Link.cpp"
 #include "iostream"
 
 using namespace std;

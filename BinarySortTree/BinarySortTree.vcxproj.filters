@@ -27,6 +27,9 @@
     <ClCompile Include="Link.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="homework.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TreeNode.h">
@@ -36,6 +39,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Link.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="homework.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
