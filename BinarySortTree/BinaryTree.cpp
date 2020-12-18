@@ -103,6 +103,10 @@ inline void BinaryTree::GetMaxDataAndDataCountFromKeyboard()
 {
     GetDataCountFromKeyBoard();    //获取生成随机数列的数据个数
     GetMaxDataFromKeyBoard();    //获取生成随机数列数据的最大值
+
+    ///
+    //以下为测试使用，已弃用
+    //
     /*cout << "Please input \"DataCount\"(0<DataCount<=20) and \"MaxData\"(50<=MaxData<=100)" << ":" << endl;
     cin >> DataCount >> MaxData;
     if (DataCount < 0 || DataCount>20 || MaxData < 50 || MaxData>100)
@@ -112,128 +116,225 @@ inline void BinaryTree::GetMaxDataAndDataCountFromKeyboard()
     }*/
 }
 
+/******************************************************
+* Author:                  gyuqian
+* Data:                     2020/12/16
+* Last-modified:		    2020/12/18
+* Func:                     从键盘读取数据，对变量赋值
+* Input:                     From Keyboard
+* Output:                   输出提示
+*******************************************************/
 inline void BinaryTree::GetDataCountFromKeyBoard()
 {
     cout << "Please input \"DataCount\"(0<DataCount<=20)" << endl;
     
     cin >> DataCount;
-    if (cin.fail()==1)
+
+    //对输入的数据进行判断，如果不符合要求则重新输入
+    if (cin.fail()==1)    //错误输入，标志位自动置1
     {
         cout << "Error Input" << endl;
-        cin.sync();
-        cin.clear();
-        cin.ignore();
+        //cin.sync();    
+        cin.clear();    //重置标志位
+        cin.ignore(numeric_limits<std::streamsize>::max());    //清空输入缓冲区
+
         GetDataCountFromKeyBoard();
     }
-    if (DataCount <0 || DataCount > 20)
+    if (DataCount <0 || DataCount > 20)    //对输入数据的大小进行判断，如果不符合要求则重新输入
     {
         cout << "Error Input" << endl;
+
         GetDataCountFromKeyBoard();
     }
 }
 
+/******************************************************
+* Author:                  gyuqian
+* Data:                     2020/12/16
+* Last-modified:		    2020/12/18
+* Func:                     从键盘读取数据，对变量赋值
+* Input:                     From Keyboard
+* Output:                   输出提示
+*******************************************************/
 inline void BinaryTree::GetMaxDataFromKeyBoard()
 {
     cout << "Please input \"MaxData\"(50<=MaxData<=100)" << endl;
     cin >> MaxData;
-    if (cin.fail() == 1)
+
+    //对输入的数据进行判断，如果不符合要求则重新输入
+    if (cin.fail() == 1)//错误输入，标志位自动置1
     {
         cout << "Error Input" << endl;
-        cin.sync();
-        cin.clear();
-        cin.ignore(numeric_limits<std::streamsize>::max());
+        //cin.sync();
+        cin.clear();    //重置标志位
+        cin.ignore(numeric_limits<std::streamsize>::max());    //清空输入缓冲区
+
         GetMaxDataFromKeyBoard();
     }
-    if (MaxData < 50 || MaxData>100)
+    if (MaxData < 50 || MaxData>100)    //对输入数据的大小进行判断，如果不符合要求则重新输入
     {
         cout << "Error Input" << endl;
+
         GetMaxDataFromKeyBoard();
     }
 }
 
+/******************************************************
+* Author:                  gyuqian
+* Data:                     2020/12/16
+* Last-modified:		    2020/12/18
+* Func:                     向二叉树中插入新节点
+* Input:                     a：要输入的数据
+*                              TreeNodeinsert：需要操作的二叉树
+* Output:                   操作完成的二叉树
+*******************************************************/
 inline TreeNode* BinaryTree::insertNode(TreeNode* TreeNodeinsert, int a)
 {
-    if (TreeNodeinsert == NULL)
+    if (TreeNodeinsert == NULL)    //二叉树为空
     {
         TreeNodeinsert = new TreeNode;
         TreeNodeinsert->changeRoot(a) ;
     }
-    else  if (a < TreeNodeinsert->getRoot())
+    else  if (a < TreeNodeinsert->getRoot())    //插入左子树
     {
         TreeNodeinsert->left = insertNode(TreeNodeinsert->left, a);
-    }     //插入左子树
-    else
+    } 
+    else    //插入右子树
     {
         TreeNodeinsert->right = insertNode(TreeNodeinsert->right, a);
-    }     //插入右子树
+    } 
     return TreeNodeinsert;
-    delete TreeNodeinsert;
+
+    delete TreeNodeinsert;    //释放局部变量的内存
 }
 
+/******************************************************
+* Author:                  gyuqian
+* Data:                     2020/12/16
+* Last-modified:		    2020/12/18
+* Func:                     获取二叉树的树高
+* Input:                     TreeNodeinsert：需要操作的二叉树
+* Output:                   high：树高
+*******************************************************/
 inline void BinaryTree::getTreeHigh(TreeNode* Tree, int& high)
 {
-    if (Tree == NULL)
+    if (Tree == NULL)    //空树
     {
         high = 0;
         return;
     }
     else
     {
-        int lhigh, rhigh;
+        int lhigh;  //左子树
+        int rhigh;   //右子树
+
         getTreeHigh(Tree->left, lhigh);  //求左子树高度
         getTreeHigh(Tree->right, rhigh);  //求右子树高度
         if (lhigh >= rhigh)
+        {
             high = lhigh + 1;
+        }
         else
+        {
             high = rhigh + 1;
+        }   
     }
 }
 
+/******************************************************
+* Author:                  gyuqian
+* Data:                     2020/12/16
+* Last-modified:		    2020/12/18
+* Func:                     获取对象中二叉树的树高
+* Input:                     对象中的二叉树
+* Output:                   向屏幕输出：
+*                               high：树高
+*******************************************************/
 inline void BinaryTree::getTreeHigh_TreeRootNode()
 {
     getTreeHigh(TreeRootNode, high);
-    cout << "树高：" << high << endl;
+
+    cout << "High：" << endl << high << endl;
 }
 
+/******************************************************
+* Author:                  gyuqian
+* Data:                     2020/12/16
+* Last-modified:		    2020/12/18
+* Func:                     输出二叉树的叶子节点
+* Input:                     Tree：需要操作的二叉树
+* Output:                   向屏幕输出：
+*                               每一个叶子节点
+*******************************************************/
 inline void BinaryTree::outTreeLeaf(TreeNode* Tree)
 {
-    if (Tree == NULL)
+    if (Tree == NULL)    //空树
+    {
         return;
-    else if (Tree->left == NULL && Tree->right == NULL)
-        //结点的左右子树同时为空，即为叶子
+    }
+    else if (Tree->left == NULL && Tree->right == NULL)    //结点的左右子树同时为空，即为叶子
     {
         cout << Tree->root << " ";
         return;
     }
     else
     {
-        outTreeLeaf(Tree->left);
-        outTreeLeaf(Tree->right);
+        outTreeLeaf(Tree->left);    //输出左子树的叶子节点
+        outTreeLeaf(Tree->right);   //输出右子树的叶子节点
     }
 }
 
+/******************************************************
+* Author:                  gyuqian
+* Data:                     2020/12/16
+* Last-modified:		    2020/12/18
+* Func:                     输出对象中二叉树的叶子节点
+* Input:                     NO INPUT
+*                               操作对象中的二叉树
+* Output:                   向屏幕输出：
+*                               每一个叶子节点
+*******************************************************/
 inline void BinaryTree::outTreeLeaf_TreeRootNode()
 {
-    cout << "叶子：" << endl;
+    cout << "Leaf：" << endl;
     outTreeLeaf(TreeRootNode);
     cout << endl;
 }
 
+/******************************************************
+* Author:                  gyuqian
+* Data:                     2020/12/16
+* Last-modified:		    2020/12/18
+* Func:                     输出二叉树的中序遍历结果
+* Input:                     Tree：需要操作的二叉树
+* Output:                   向屏幕输出：
+*                               中序遍历结果
+*******************************************************/
 inline void	BinaryTree::inordeTree(TreeNode* Tree)
 {
     if (Tree != NULL)
     {
-        inordeTree(Tree->left);
-        cout << Tree->getRoot() << "  ";
-        inordeTree(Tree->right);
+        inordeTree(Tree->left);    //遍历左子树
+        cout << Tree->getRoot() << "  ";    //输出节点值
+        inordeTree(Tree->right);    //遍历右子树
     }
 }
 
+/******************************************************
+* Author:                  gyuqian
+* Data:                     2020/12/16
+* Last-modified:		    2020/12/18
+* Func:                     输出对象中二叉树的中序遍历结果
+* Input:                     NO INPUT
+*                               操作对象中的二叉树
+* Output:                   向屏幕输出：
+*                               中序遍历结果
+*******************************************************/
 inline void BinaryTree::inordeTree_TreeRootNode()
 {
     if (TreeRootNode != NULL)
     {
-        cout << "二叉排序树：" << endl;
+        cout << "BinarySortTree：" << endl;
         inordeTree(TreeRootNode);
         cout << endl;
     }
@@ -243,26 +344,53 @@ inline void BinaryTree::inordeTree_TreeRootNode()
     }
 }
 
+/******************************************************
+* Author:                  gyuqian
+* Data:                     2020/12/16
+* Last-modified:		    2020/12/18
+* Func:                     深度复制二叉树
+* Input:                     rootNode 要复制的源二叉树
+* Output:                   二叉树副本
+*******************************************************/
 inline TreeNode* BinaryTree::TreeClone(TreeNode* rootNode)
 {
-    if (rootNode == NULL) {
+    if (rootNode == NULL) //空树
+    {
         return NULL;
     }
     TreeNode* new_node = NULL;
     new_node = new TreeNode;
+
     new_node->changeRoot(rootNode->root);
-    new_node->left = TreeClone(rootNode->left);
-    new_node->right = TreeClone(rootNode->right);
+    new_node->left = TreeClone(rootNode->left);    //拷贝左子树
+    new_node->right = TreeClone(rootNode->right);    //拷贝右子树
 
     return new_node;
     delete new_node;
 }
 
+/******************************************************
+* Author:                  gyuqian
+* Data:                     2020/12/16
+* Last-modified:		    2020/12/18
+* Func:                     用拷贝的方式创建对象中的二叉树
+* Input:                     rootNode 要复制的源二叉树
+* Output:                   对象中的二叉树
+*******************************************************/
 inline void BinaryTree::TreeClonde_paste(TreeNode* rootNode)
 {
     TreeRootNode = TreeClone(rootNode);
 }
 
+/******************************************************
+* Author:                  gyuqian
+* Data:                     2020/12/16
+* Last-modified:		    2020/12/18
+* Func:                     获取指定节点的父节点
+* Input:                     TreeNode_to_getParent 要查找父节点的节点
+*                              TreeNodefound 要查找的树
+* Output:                   找到的父节点
+*******************************************************/
 inline TreeNode* BinaryTree::get_TreeNode_parnet(TreeNode* TreeNodefound, TreeNode* TreeNode_to_getParent)
 {
     TreeNode* TreeNodefound_left = NULL;
@@ -271,74 +399,105 @@ inline TreeNode* BinaryTree::get_TreeNode_parnet(TreeNode* TreeNodefound, TreeNo
     TreeNode* TreeNodefound_right = NULL;
     //TreeNodefound_right = new TreeNode;
 
-    if (TreeNodefound == NULL || TreeNodefound->left == TreeNode_to_getParent || TreeNodefound->right == TreeNode_to_getParent)
+    if (TreeNodefound == NULL || TreeNodefound->left == TreeNode_to_getParent || TreeNodefound->right == TreeNode_to_getParent)    //空树，或者根节点就是要查找的父节点
     {
         return TreeNodefound;
     }
 
-    TreeNodefound_left = get_TreeNode_parnet(TreeNodefound->left, TreeNode_to_getParent); //的左孩子 是否为p的父节点
+    //左子树是否为父节点
+    TreeNodefound_left = get_TreeNode_parnet(TreeNodefound->left, TreeNode_to_getParent); 
     if (TreeNodefound_left != NULL)
     {
         
         return TreeNodefound_left;
         delete TreeNodefound_left;
         delete TreeNodefound_right;
-    }//是的话，return left，无需找右子树
+    }//是的话，return，无需找右子树
 
-    TreeNodefound_right = get_TreeNode_parnet(TreeNodefound_right, TreeNode_to_getParent); //root的右孩子 是否为p的父节点
+    //右子树是否为父节点
+    TreeNodefound_right = get_TreeNode_parnet(TreeNodefound_right, TreeNode_to_getParent); 
     if (TreeNodefound_right != NULL)
     {
         
         return TreeNodefound_right;
         delete TreeNodefound_left;
         delete TreeNodefound_right;
-    }//是的话，return right
+    }//是的话，return
 
     delete TreeNodefound_left;
     delete TreeNodefound_right;
-    return NULL; //左右子树都不包含p，返回 null; (return right 同样是null)
+    return NULL; //左右子树未找到，返回NULL
 }
 
+/******************************************************
+* Author:                  gyuqian
+* Data:                     2020/12/16
+* Last-modified:		    2020/12/18
+* Func:                     在二叉树中寻找节点
+* Input:                     to_find 要查找节点
+*                              TreeNodefound 要查找的树
+* Output:                   寻找的结果
+*******************************************************/
 inline TreeNode* BinaryTree::TreeFind(TreeNode* TreeNodefound, int to_find)
 {
-    if (TreeNodefound == NULL)
+    if (TreeNodefound == NULL)    //空树
     {
         return TreeNodefound;
     }
     else
     {
-        if (TreeNodefound->getRoot() == to_find)
+        if (TreeNodefound->getRoot() == to_find)    //根节点就是要查找的节点
         {
             return TreeNodefound;
         }
-        else if (TreeNodefound->getRoot() > to_find)
+        else if (TreeNodefound->getRoot() > to_find)    //查找左子树
         {
             return TreeFind(TreeNodefound->left, to_find);
         }
-        else
+        else    //查找右子树
         {
             return TreeFind(TreeNodefound->right, to_find);
         }
     }
 }
 
+/******************************************************
+* Author:                  gyuqian
+* Data:                     2020/12/16
+* Last-modified:		    2020/12/18
+* Func:                     在对象二叉树中寻找节点
+* Input:                     to_find 要查找节点
+* Output:                   寻找的结果
+*******************************************************/
 inline void BinaryTree::TreeFind_TreeRootNode(int to_find)
 {
     TreeNode* TreeNodereturn;
     TreeNodereturn = new TreeNode;
     TreeNodereturn=TreeFind(TreeRootNode, to_find);
+
     if (TreeNodereturn == NULL)
     {
         cout << "Not Found" << endl;
     }
     else
     {
+        //输出找到的根节点的地址
         cout << "Found " << "Address：" << TreeNodereturn << "value：" << TreeNodereturn->getRoot() << endl;
     }
 
     delete TreeNodereturn;
 }
 
+/******************************************************
+* Author:                  gyuqian
+* Data:                     2020/12/16
+* Last-modified:		    2020/12/18
+* Func:                     删除二叉树中的节点
+* Input:                     to_delete 要查找节点
+*                              TreeNodeCopyTemp：要删除二叉树的
+*                              临时拷贝
+* Output:                   NO OUTPUT
+*******************************************************/
 inline void BinaryTree::DeleteTreeNode(TreeNode* TreeNodeCopyTemp, int to_delete)
 {
     TreeNode* L;
@@ -435,6 +594,14 @@ inline void BinaryTree::DeleteTreeNode(TreeNode* TreeNodeCopyTemp, int to_delete
     }
 }
 
+/******************************************************
+* Author:                  gyuqian
+* Data:                     2020/12/16
+* Last-modified:		    2020/12/18
+* Func:                     在对象二叉树中删除节点
+* Input:                     to_delete 要查找节点
+* Output:                   NO OUTPUT
+*******************************************************/
 inline void BinaryTree::DeleteTreeNode_TreeRootNode(int to_delete)
 {
     DeleteTreeNode(TreeRootNode, to_delete);
