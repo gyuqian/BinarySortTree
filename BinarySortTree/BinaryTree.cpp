@@ -1,3 +1,10 @@
+/***********************************************
+* Auther:				gyuqian
+* Data:					2020/12/15
+* Last-modified:		2020/12/18
+* File:					对一棵二叉树操作的封装，函数的
+*                          实现
+************************************************/
 #pragma once
 #include "BinaryTree.h"
 #include "iostream"
@@ -11,12 +18,12 @@ using namespace std;
  ******************************************************/
 inline BinaryTree::BinaryTree()
 {
-    numberNodeCount = 0;
     DataCount = 0;
     MaxData = 0;
-    rootdata = NULL;
     TreeRootNode = NULL;
     high = 0;
+    //rootdata = NULL;
+    //numberNodeCount = 0;
 }
 
 /******************************************************
@@ -251,12 +258,12 @@ inline TreeNode* BinaryTree::TreeClone(TreeNode* rootNode)
     delete new_node;
 }
 
-inline void BinaryTree::TreeClonde_TreeRootNode_V(TreeNode* rootNode)
+inline void BinaryTree::TreeClonde_paste(TreeNode* rootNode)
 {
     TreeRootNode = TreeClone(rootNode);
 }
 
-inline TreeNode* BinaryTree::get_TreeFind_parnet(TreeNode* TreeNodefound, TreeNode* TreeNode_to_getParent)
+inline TreeNode* BinaryTree::get_TreeNode_parnet(TreeNode* TreeNodefound, TreeNode* TreeNode_to_getParent)
 {
     TreeNode* TreeNodefound_left = NULL;
     //TreeNodefound_left = new TreeNode;
@@ -269,7 +276,7 @@ inline TreeNode* BinaryTree::get_TreeFind_parnet(TreeNode* TreeNodefound, TreeNo
         return TreeNodefound;
     }
 
-    TreeNodefound_left = get_TreeFind_parnet(TreeNodefound->left, TreeNode_to_getParent); //的左孩子 是否为p的父节点
+    TreeNodefound_left = get_TreeNode_parnet(TreeNodefound->left, TreeNode_to_getParent); //的左孩子 是否为p的父节点
     if (TreeNodefound_left != NULL)
     {
         
@@ -278,7 +285,7 @@ inline TreeNode* BinaryTree::get_TreeFind_parnet(TreeNode* TreeNodefound, TreeNo
         delete TreeNodefound_right;
     }//是的话，return left，无需找右子树
 
-    TreeNodefound_right = get_TreeFind_parnet(TreeNodefound_right, TreeNode_to_getParent); //root的右孩子 是否为p的父节点
+    TreeNodefound_right = get_TreeNode_parnet(TreeNodefound_right, TreeNode_to_getParent); //root的右孩子 是否为p的父节点
     if (TreeNodefound_right != NULL)
     {
         

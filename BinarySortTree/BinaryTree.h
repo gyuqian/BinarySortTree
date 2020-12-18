@@ -1,3 +1,11 @@
+/***********************************************
+* Auther:				gyuqian
+* Data:					2020/12/15
+* Last-modified:		2020/12/18
+* File:					对一棵二叉树操作的封装
+*                          本文件不单独使用
+************************************************/
+
 #pragma once
 #include"TreeNode.cpp"
 class BinaryTree
@@ -6,16 +14,25 @@ class BinaryTree
 	//公有数据
 	//
 public:
-	TreeNode* TreeRootNode;
-	//BinaryTree* Tree;
-	int MaxData;
-	int DataCount;
-	int numberNodeCount;//根节点计数 没用到
-	int* rootdata;
-	int high;
+	TreeNode* TreeRootNode;    //二叉树根节点指针
 
+	int high;    //存储树高
+	int MaxData;    //节点最大值
+	int DataCount;    //节点数
+
+	//
+	//以下为测试使用变量，已弃用
+	//
+	//BinaryTree* Tree;
+	//int numberNodeCount;    //根节点计数 没用到
+	//int* rootdata;
+	
+	//
+	//公有函数
+	//
 public:
 	//
+	//构造函数，初始化对象
 	BinaryTree();
 	//
 	void GetMaxDataAndDataCount(int, int);
@@ -24,23 +41,28 @@ public:
 	void GetMaxDataFromKeyBoard();
 	void GetDataCountFromKeyBoard();
 	//
-	void getRandRootData_creetTree();//获取datacount个随机数
+	//获取随机数数列，同时生成二叉排序树
+	void getRandRootData_creetTree();
 	//
-	TreeNode* insertNode(TreeNode*, int);//创建函数插入节点
+    //二叉排序树插入节点
+	TreeNode* insertNode(TreeNode*, int);
 	//
-	void getTreeHigh(TreeNode*, int&);//获取树高
-	void getTreeHigh_TreeRootNode();//以便省略传递参数
+	//获取二叉排序树高
+	void getTreeHigh(TreeNode*, int&);
+    //获取对象中的二叉排序数高
+	void getTreeHigh_TreeRootNode();
 	//
 	void outTreeLeaf(TreeNode*);
 	void outTreeLeaf_TreeRootNode();
 	//
-	void inordeTree(TreeNode*);//中根（序）遍历
+	//中根（序）遍历
+	void inordeTree(TreeNode*);
 	void inordeTree_TreeRootNode();
 	//
-	TreeNode* TreeClone(TreeNode*);//未完成实验二
-	void TreeClonde_TreeRootNode_V(TreeNode*);
+	TreeNode* TreeClone(TreeNode*);
+	void TreeClonde_paste(TreeNode*);
 	//
-	TreeNode* get_TreeFind_parnet(TreeNode*, TreeNode*);
+	TreeNode* get_TreeNode_parnet(TreeNode*, TreeNode*);
 	//
 	TreeNode* TreeFind(TreeNode*, int);
 	void TreeFind_TreeRootNode(int);
@@ -49,5 +71,4 @@ public:
 	void DeleteTreeNode_TreeRootNode(int);
 	//
 	int getARandNumberBetweenZeroAndMaxData();
-
 };
