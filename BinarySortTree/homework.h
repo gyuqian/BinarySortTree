@@ -27,4 +27,8 @@ public:
 	void homework1();
 	//²Ù×÷¶þ
 	void homework2();
+	//
+	void ChooseATree();
+	//
+	int GetAintNumFromKeyBoard();
 };

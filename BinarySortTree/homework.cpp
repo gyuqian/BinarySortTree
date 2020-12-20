@@ -50,16 +50,46 @@ inline void homework::homework1()
 *                          4.使用键盘输入想要删除的数，并输出
 *                          删除数据后的二叉排列
 * Input:                 从键盘输入：
-*                          which_tree_to_find：选择要查找数的标志
-*                          to_find：要查找的数值
 *                          to_delete：要删除的数值
 *Output:               输出到屏幕
+* Functional Dependency:
+*                          在该函数中调用如下函数：
+*                          ChooseATree
 ************************************************/
 inline void homework::homework2()
 {
 	//克隆源二叉树
 	TreeClone.TreeClonde_paste(Tree.TreeRootNode);
 
+	ChooseATree();
+
+	//删除二叉树
+	int to_delete;
+	cout << "Please Input a Number to Delete, Press Enter to confirm!" << endl;
+	cin >> to_delete;
+
+	TreeClone.DeleteTreeNode_TreeRootNode(to_delete);
+	TreeClone.inordeTree_TreeRootNode();
+}
+
+/***********************************************
+* Auther:				gyuqian
+* Data:					2020/12/15
+* Last-modified:		2020/12/20
+* Func:					1.使用键盘输入数据，选择要查找的二
+*                          叉树
+*                          2..使用键盘输入想要查找的数，并输出
+*                          查找结果
+* Input:                 从键盘输入：
+*                          which_tree_to_find：选择要查找数的标志
+*                          to_find：要查找的数值
+*Output:               输出到屏幕
+* Functional Dependency:
+*                          该函数中调用了如下函数：
+*                          GetAintNumFromKeyBoard
+************************************************/
+inline void homework::ChooseATree()
+{
 	//查找二叉树
 	int which_tree_to_find;
 	which_tree_to_find = 0;    //初始化查找标志位
@@ -69,25 +99,47 @@ inline void homework::homework2()
 		<< "Enter 1 to Seach Source Binary Tree" << endl
 		<< "Enter 2 to Seach The Copy Of Source Tree" << endl
 		<< "Press Enter to confirm!" << endl;
-	cin >> which_tree_to_find;
+	which_tree_to_find = GetAintNumFromKeyBoard();
 	if (which_tree_to_find == 1)    //查找源二叉树
 	{
 		cout << "Please Input a Number to Find, Press Enter to confirm!" << endl;
-	    cin >> to_find;
+		to_find = GetAintNumFromKeyBoard();
 		Tree.TreeFind_TreeRootNode(to_find);
 	}
 	else if (which_tree_to_find == 2)    //查找二叉树副本
 	{
 		cout << "Please Input a Number to Find, Press Enter to confirm!" << endl;
-		cin >> to_find;
+		to_find = GetAintNumFromKeyBoard();
 		TreeClone.TreeFind_TreeRootNode(to_find);
 	}
+	else
+	{
+		ChooseATree();
+	}
+}
 
-	//删除二叉树
-	int to_delete;
-	cout << "Please Input a Number to Delete, Press Enter to confirm!" << endl;
-	cin >> to_delete;
+/***********************************************
+* Auther:				gyuqian
+* Data:					2020/12/20
+* Last-modified:		2020/12/20
+* Func:					从键盘输入一个整型数据
+* Input:                 从键盘输入
+*Output:               getNum
+************************************************/
+inline int homework::GetAintNumFromKeyBoard()
+{
+	int getNum;
+	cin.ignore(numeric_limits<std::streamsize>::max(),'\n');
+	cin >> getNum;
 
-	TreeClone.DeleteTreeNode_TreeRootNode(to_delete);
-	TreeClone.inordeTree_TreeRootNode();
+	if (cin.fail() == 1)
+	{
+		cin.clear();
+		cout << "Please Input A Integer Number" << endl;
+		GetAintNumFromKeyBoard();
+	}
+	else
+	{
+		return getNum;
+	}
 }

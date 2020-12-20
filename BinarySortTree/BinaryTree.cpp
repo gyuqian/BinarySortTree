@@ -136,7 +136,7 @@ inline void BinaryTree::GetDataCountFromKeyBoard()
         cout << "Error Input" << endl;
         //cin.sync();    
         cin.clear();    //重置标志位
-        cin.ignore(numeric_limits<std::streamsize>::max());    //清空输入缓冲区
+        cin.ignore(numeric_limits<std::streamsize>::max(),'\n');    //清空输入缓冲区
 
         GetDataCountFromKeyBoard();
     }
@@ -167,7 +167,7 @@ inline void BinaryTree::GetMaxDataFromKeyBoard()
         cout << "Error Input" << endl;
         //cin.sync();
         cin.clear();    //重置标志位
-        cin.ignore(numeric_limits<std::streamsize>::max());    //清空输入缓冲区
+        cin.ignore(numeric_limits<std::streamsize>::max(),'\n');    //清空输入缓冲区
 
         GetMaxDataFromKeyBoard();
     }
@@ -493,7 +493,7 @@ inline void BinaryTree::TreeFind_TreeRootNode(int to_find)
 /******************************************************
 * Author:                  gyuqian
 * Data:                     2020/12/16
-* Last-modified:		    2020/12/18
+* Last-modified:		    2020/12/20
 * Func:                     删除二叉树中的节点
 * Input:                     to_delete 要查找节点
 *                              TreeNodeCopyTemp：要删除二叉树的
@@ -525,7 +525,7 @@ inline void BinaryTree::DeleteTreeNode(TreeNode* TreeNodeCopyTemp, int to_delete
         {
             if (tempNode->left == NULL && tempNode->right == NULL)    //要删除的节点是叶子节点
             {
-                if (tempNode == TreeNodeCopyTemp)    //要删除的是根节点
+                if (tempNode == TreeNodeCopyTemp)    //要删除的是根节点,且树高为1
                 {
                     delete tempNode;
                 }
@@ -555,16 +555,34 @@ inline void BinaryTree::DeleteTreeNode(TreeNode* TreeNodeCopyTemp, int to_delete
                 delete tempNode;
             }    //End else if (tempNode->right == NULL)    //要删除节点只有左孩子
 
-            else
+            else    //要删除的节点有左右孩子，找右子树最小的节点代替此节点
             {
                 LL = tempNode;
-                L = tempNode->left;
+                L = tempNode->right;    //右孩子 / 右子树
 
-                if (L->left!=NULL)
+                while (L->left != NULL)    //寻找右子树中的最小值
                 {
                     LL = L;
                     L = L->left;
-                    tempNode->changeRoot(L->getRoot());
+                }
+                tempNode->changeRoot(L->getRoot());
+
+                if (LL == tempNode)    //右孩子的左子树为空
+                {
+                    LL->right = L->right;
+                }
+                else
+                {
+                LL->left = L->right;
+                }
+
+                delete L;
+                /*
+                if (L->left!=NULL)    //右孩子的左子树不为空
+                {
+                    LL = L; 
+                    L = L->left;
+                    tempNode->changeRoot(L->getRoot()); //用
                     LL->left = L->left;
 
                     while ( L->left != NULL)
@@ -574,12 +592,13 @@ inline void BinaryTree::DeleteTreeNode(TreeNode* TreeNodeCopyTemp, int to_delete
                     }
                     tempNode->left = NULL;
                 }
-                else
+                else    //右孩子的左子树为空
                 {
                     tempNode->changeRoot(L->getRoot());
                     LL->right = L->right;
-                }
-            }
+                }*/
+
+            }    //End else    //要删除的节点有左右孩子，找左子树最大的节点代替此节点
 
             tempNode = NULL;
         }// End if (tempNode->getRoot() == to_delete)    //删除节点
