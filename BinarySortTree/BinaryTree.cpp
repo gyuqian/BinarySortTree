@@ -2,8 +2,8 @@
 * Auther:				gyuqian
 * Data:					2020/12/15
 * Last-modified:		2020/12/18
-* File:					对一棵二叉树操作的封装，函数的
-*                          实现
+* File:					对一棵二叉树操作的封装
+*                          函数实现
 ************************************************/
 #pragma once
 #include "BinaryTree.h"
@@ -399,7 +399,9 @@ inline TreeNode* BinaryTree::get_TreeNode_parnet(TreeNode* TreeNodefound, TreeNo
     TreeNode* TreeNodefound_right = NULL;
     //TreeNodefound_right = new TreeNode;
 
-    if (TreeNodefound == NULL || TreeNodefound->left == TreeNode_to_getParent || TreeNodefound->right == TreeNode_to_getParent)    //空树，或者根节点就是要查找的父节点
+    if (TreeNodefound == NULL    //空树
+        || TreeNodefound->left == TreeNode_to_getParent 
+        || TreeNodefound->right == TreeNode_to_getParent)    //根节点就是要查找的父节点
     {
         return TreeNodefound;
     }
@@ -502,55 +504,57 @@ inline void BinaryTree::DeleteTreeNode(TreeNode* TreeNodeCopyTemp, int to_delete
 {
     TreeNode* L;
     TreeNode* LL;
-    TreeNode* tempNode=NULL;
 
+    TreeNode* tempNode=NULL;    //要删除的节点
     tempNode = TreeNodeCopyTemp;
 
-    TreeNode* tempNode_Parent;
+    TreeNode* tempNode_Parent;    //要删除节点的父节点
     tempNode_Parent = TreeNodeCopyTemp;
 
     int child;
-    child = 0;
+    child = 0;    //子节点标志位，0为左孩子，1为右孩子
 
-    if (TreeNodeCopyTemp == NULL)
+    if (TreeNodeCopyTemp == NULL)    //空树
     {
         return;
     }
 
     while (tempNode != NULL)
     {
-        if (tempNode->getRoot() == to_delete)
+        if (tempNode->getRoot() == to_delete)    //删除节点
         {
-            if (tempNode->left == NULL && tempNode->right == NULL)
+            if (tempNode->left == NULL && tempNode->right == NULL)    //要删除的节点是叶子节点
             {
-                if (tempNode == TreeNodeCopyTemp)
+                if (tempNode == TreeNodeCopyTemp)    //要删除的是根节点
                 {
                     delete tempNode;
                 }
-                else if (child == 0)
+                else if (child == 0)    //要删除节点是其父节点的左孩子
                 {
                     tempNode_Parent->left = NULL;
                     delete tempNode;
                 }
-                else
+                else    //要删除节点是其父节点的右孩子
                 {
                     tempNode_Parent->right = NULL;
                     delete tempNode;
                 }
-            }
-            else if (tempNode->right == NULL)
+            }    //End if (tempNode->left == NULL && tempNode->right == NULL)    //要删除的节点是叶子节点
+
+            else if (tempNode->right == NULL)    //要删除节点只有左孩子
             {
-                if (child == 0)
+                if (child == 0)    //要删除节点是其父节点的左孩子
                 {
                     tempNode_Parent->left = tempNode->left;
                 }
-                else
+                else    //要删除节点是其父节点的右孩子
                 {
                     tempNode_Parent->right = tempNode->left;
                 }
 
                 delete tempNode;
-            }
+            }    //End else if (tempNode->right == NULL)    //要删除节点只有左孩子
+
             else
             {
                 LL = tempNode;
@@ -578,20 +582,22 @@ inline void BinaryTree::DeleteTreeNode(TreeNode* TreeNodeCopyTemp, int to_delete
             }
 
             tempNode = NULL;
-        }
-        else if (to_delete < tempNode->getRoot())
+        }// End if (tempNode->getRoot() == to_delete)    //删除节点
+
+        else if (to_delete < tempNode->getRoot())    //在左子树查找要删除的节点
         {
             child = 0;
             tempNode_Parent = tempNode;
             tempNode = tempNode->left;
         }
-        else
+
+        else    //在右子树查找要删除的节点
         {
             child = 1;
             tempNode_Parent = tempNode;
             tempNode = tempNode->right;
         }
-    }
+    }    //End while (tempNode != NULL)
 }
 
 /******************************************************
@@ -606,6 +612,8 @@ inline void BinaryTree::DeleteTreeNode_TreeRootNode(int to_delete)
 {
     DeleteTreeNode(TreeRootNode, to_delete);
 }
+
+/*调试过程中弃用的函数*/
 
 /*inline void BinaryTree::DeleteTreeNode(TreeNode* TreeNodeCopyTemp, int to_delete)
 {
