@@ -16,20 +16,31 @@ inline BinaryTree::BinaryTree()
 
 inline int BinaryTree::getSomeRandNumberBetweenZeroAndMaxData()
 {
+    
     return rand() % MaxData;
 }
 
 inline void BinaryTree::getRandRootData_creetTree()
 {
-    int i;
-    int randnumber;
+    int i,j;
+   // int randnumber;
+    int a[100];
 
     cout << "Ëæ»úÐòÁÐ£º" << endl;
     for (i = 0; i < DataCount; i++)
     {
-        randnumber= getSomeRandNumberBetweenZeroAndMaxData();
-        cout << randnumber << " ";
-            TreeNode1 = insertNode(TreeNode1, randnumber);
+        a[i]= getSomeRandNumberBetweenZeroAndMaxData();
+
+        //randnumber= getSomeRandNumberBetweenZeroAndMaxData();
+        for (j = 0; j < i; j++)
+        {
+            while(a[i]==a[j])
+                a[i]= getSomeRandNumberBetweenZeroAndMaxData();
+
+        }
+        cout<<a[i]<<",";
+       // cout << randnumber << ", ";
+           TreeNode1 = insertNode(TreeNode1, a[i]);
     }
     cout << endl;
 }
@@ -42,9 +53,11 @@ inline void BinaryTree::GetMaxDataAndDataCount(int data, int max)
 
 inline void BinaryTree::GetMaxDataAndDataCountFromKeyboard()
 {
-    cout << "Please input \"DataCount\"(0<DataCount<=20) and \"MaxData\"(50<=MaxData<=100)" << ":" << endl;
-    cin >> DataCount >> MaxData;
-    if (DataCount < 0 || DataCount>20 || MaxData < 50 || MaxData>100)
+    cout << "Please input \"DataCount\"(10<DataCount<=20)" <<endl;
+    cin >> DataCount;
+        cout<<"MaxData\"(50<=MaxData<=100)" << ":" << endl;
+        cin>> MaxData;
+    if (DataCount < 10 || DataCount>20 || MaxData < 50 || MaxData>100)
     {
         cout << "Error Input" << endl;
         GetMaxDataAndDataCountFromKeyboard();
