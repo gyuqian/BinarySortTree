@@ -31,5 +31,5 @@ public:
 	//
 	void ChooseATree();
 	//
-	void GetAintNumFromKeyBoard(int &);
+	/*void GetAintNumFromKeyBoard(int &);*/
 };

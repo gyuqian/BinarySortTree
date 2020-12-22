@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BinaryTree.cpp" />
+    <ClCompile Include="getAnin_input.cpp" />
     <ClCompile Include="homework.cpp" />
     <ClCompile Include="Link.cpp" />
     <ClCompile Include="LinkHead.cpp" />
@@ -150,12 +151,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryTree.h" />
+    <ClInclude Include="getAn_int_input.h" />
     <ClInclude Include="homework.h" />
     <ClInclude Include="Link.h" />
     <ClInclude Include="LinkHead.h" />
     <ClInclude Include="LinkOperation.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SeqStack.h" />
     <ClInclude Include="TreeNode.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="BinarySortTree.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

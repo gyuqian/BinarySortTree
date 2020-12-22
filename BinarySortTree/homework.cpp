@@ -7,6 +7,7 @@
 
 #pragma once
 #include "homework.h"
+#include "getAn_int_input.h"
 #include <iostream>
 
 using namespace std;
@@ -136,15 +137,15 @@ void homework::ChooseATree()
 * Input:                 ¥”º¸≈Ã ‰»Î
 *Output:                N/A
 ************************************************/
-void homework::GetAintNumFromKeyBoard(int &getNum)
-{
-	cin.ignore(numeric_limits<std::streamsize>::max(),'\n');
-	cin >> getNum;
-
-	if (cin.fail() == 1)
-	{
-		cin.clear();
-		cout << "Please Input A Integer Number" << endl;
-		GetAintNumFromKeyBoard(getNum);
-	}
-}
+//void homework::GetAintNumFromKeyBoard(int &getNum)
+//{
+//	cin.ignore(numeric_limits<std::streamsize>::max(),'\n');
+//	cin >> getNum;
+//
+//	if (cin.fail() == 1)
+//	{
+//		cin.clear();
+//		cout << "Please Input A Integer Number" << endl;
+//		GetAintNumFromKeyBoard(getNum);
+//	}
+//}

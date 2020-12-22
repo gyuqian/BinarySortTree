@@ -7,6 +7,7 @@
 ************************************************/
 #pragma once
 #include "BinaryTree.h"
+#include "getAn_int_input.h"
 #include "iostream"
 
 using namespace std;
@@ -132,19 +133,21 @@ void BinaryTree::GetMaxDataAndDataCountFromKeyboard()
 void BinaryTree::GetDataCountFromKeyBoard()
 {
     cout << "Please input \"DataCount\"(0<DataCount<=20)" << endl;
+
+    GetAintNumFromKeyBoard(DataCount);
     
-    cin >> DataCount;
+    //cin >> DataCount;
 
-    //对输入的数据进行判断，如果不符合要求则重新输入
-    if (cin.fail()==1)    //错误输入，标志位自动置1
-    {
-        cout << "Error Input" << endl;
-        //cin.sync();    
-        cin.clear();    //重置标志位
-        cin.ignore(numeric_limits<std::streamsize>::max(),'\n');    //清空输入缓冲区
+    ////对输入的数据进行判断，如果不符合要求则重新输入
+    //if (cin.fail()==1)    //错误输入，标志位自动置1
+    //{
+    //    cout << "Error Input" << endl;
+    //    //cin.sync();    
+    //    cin.clear();    //重置标志位
+    //    cin.ignore(numeric_limits<std::streamsize>::max(),'\n');    //清空输入缓冲区
 
-        GetDataCountFromKeyBoard();
-    }
+    //    GetDataCountFromKeyBoard();
+    //}
     if (DataCount <0 || DataCount > 20)    //对输入数据的大小进行判断，如果不符合要求则重新输入
     {
         cout << "Error Input" << endl;
@@ -164,18 +167,19 @@ void BinaryTree::GetDataCountFromKeyBoard()
 void BinaryTree::GetMaxDataFromKeyBoard()
 {
     cout << "Please input \"MaxData\"(50<=MaxData<=100)" << endl;
-    cin >> MaxData;
+    GetAintNumFromKeyBoard(MaxData);
+    //cin >> MaxData;
 
-    //对输入的数据进行判断，如果不符合要求则重新输入
-    if (cin.fail() == 1)//错误输入，标志位自动置1
-    {
-        cout << "Error Input" << endl;
-        //cin.sync();
-        cin.clear();    //重置标志位
-        cin.ignore(numeric_limits<std::streamsize>::max(),'\n');    //清空输入缓冲区
+    ////对输入的数据进行判断，如果不符合要求则重新输入
+    //if (cin.fail() == 1)//错误输入，标志位自动置1
+    //{
+    //    cout << "Error Input" << endl;
+    //    //cin.sync();
+    //    cin.clear();    //重置标志位
+    //    cin.ignore(numeric_limits<std::streamsize>::max(),'\n');    //清空输入缓冲区
 
-        GetMaxDataFromKeyBoard();
-    }
+    //    GetMaxDataFromKeyBoard();
+    //}
     if (MaxData < 50 || MaxData>100)    //对输入数据的大小进行判断，如果不符合要求则重新输入
     {
         cout << "Error Input" << endl;

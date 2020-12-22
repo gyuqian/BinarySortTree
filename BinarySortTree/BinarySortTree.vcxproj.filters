@@ -39,6 +39,9 @@
     <ClCompile Include="SeqStack.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="getAnin_input.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TreeNode.h">
@@ -62,5 +65,16 @@
     <ClInclude Include="SeqStack.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="getAn_int_input.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="BinarySortTree.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
