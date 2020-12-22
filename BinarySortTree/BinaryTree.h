@@ -19,13 +19,13 @@ public:
 	int high;    //存储树高
 	int MaxData;    //节点最大值
 	int DataCount;    //节点数
-
+    int* rootdata;
 	//
 	//以下为测试使用变量，已弃用
 	//
 	//BinaryTree* Tree;
 	//int numberNodeCount;    //根节点计数 没用到
-	//int* rootdata;
+	
 	
 	//
 	//公有函数

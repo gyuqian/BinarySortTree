@@ -70,6 +70,12 @@ inline void homework::homework2()
 
 	TreeClone.DeleteTreeNode_TreeRootNode(to_delete);
 	TreeClone.inordeTree_TreeRootNode();
+	//Tree.inordeTree_TreeRootNode();
+
+	cout << "Creat Link..." << endl;
+	LinkOpretion1.createDirectLink(Tree, Tree.rootdata, Tree.DataCount);
+	cout << "Topological Sort" << endl;
+	LinkOpretion1.sortTop(Tree.DataCount);
 }
 
 /***********************************************
@@ -99,17 +105,17 @@ inline void homework::ChooseATree()
 		<< "Enter 1 to Seach Source Binary Tree" << endl
 		<< "Enter 2 to Seach The Copy Of Source Tree" << endl
 		<< "Press Enter to confirm!" << endl;
-	which_tree_to_find = GetAintNumFromKeyBoard();
+    GetAintNumFromKeyBoard(which_tree_to_find);
 	if (which_tree_to_find == 1)    //查找源二叉树
 	{
 		cout << "Please Input a Number to Find, Press Enter to confirm!" << endl;
-		to_find = GetAintNumFromKeyBoard();
+		GetAintNumFromKeyBoard(to_find);
 		Tree.TreeFind_TreeRootNode(to_find);
 	}
 	else if (which_tree_to_find == 2)    //查找二叉树副本
 	{
 		cout << "Please Input a Number to Find, Press Enter to confirm!" << endl;
-		to_find = GetAintNumFromKeyBoard();
+		GetAintNumFromKeyBoard(to_find);
 		TreeClone.TreeFind_TreeRootNode(to_find);
 	}
 	else
@@ -126,9 +132,8 @@ inline void homework::ChooseATree()
 * Input:                 从键盘输入
 *Output:               getNum
 ************************************************/
-inline int homework::GetAintNumFromKeyBoard()
+inline void homework::GetAintNumFromKeyBoard(int &getNum)
 {
-	int getNum;
 	cin.ignore(numeric_limits<std::streamsize>::max(),'\n');
 	cin >> getNum;
 
@@ -136,10 +141,6 @@ inline int homework::GetAintNumFromKeyBoard()
 	{
 		cin.clear();
 		cout << "Please Input A Integer Number" << endl;
-		GetAintNumFromKeyBoard();
-	}
-	else
-	{
-		return getNum;
+		GetAintNumFromKeyBoard(getNum);
 	}
 }

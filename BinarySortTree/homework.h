@@ -8,6 +8,7 @@
 
 #pragma once
 #include "BinaryTree.cpp"
+#include "LinkOperation.cpp"
 
 class homework
 {
@@ -17,12 +18,12 @@ class homework
 public:
 	BinaryTree Tree;    //源树
 	BinaryTree TreeClone;    //克隆源树
-
+	LinkOperation LinkOpretion1;
 	//
 	//公有函数
 	//
 public:
-
+	//homework();
 	//操作一
 	void homework1();
 	//操作二
@@ -30,5 +31,5 @@ public:
 	//
 	void ChooseATree();
 	//
-	int GetAintNumFromKeyBoard();
+	void GetAintNumFromKeyBoard(int &);
 };

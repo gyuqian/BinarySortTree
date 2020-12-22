@@ -4,6 +4,7 @@
 
 inline Link::Link()
 {
+	adjvex = 0;
 	data = 0;
 	next = NULL;
 }

@@ -14,7 +14,7 @@ using namespace std;
 /******************************************************
  * Author : gyuqian
  * Date   : 2020/12/16
- * Func   : 析构函数，初始化二叉树类中变量的初始值
+ * Func   : 构造函数，初始化二叉树类中变量的初始值
  ******************************************************/
 inline BinaryTree::BinaryTree()
 {
@@ -22,7 +22,7 @@ inline BinaryTree::BinaryTree()
     MaxData = 0;
     TreeRootNode = NULL;
     high = 0;
-    //rootdata = NULL;
+    rootdata = NULL;
     //numberNodeCount = 0;
 }
 
@@ -30,8 +30,8 @@ inline BinaryTree::BinaryTree()
  * Author   : gyuqian
  * Date      : 2020/12/16
  * Func      : 生成一个随机数，数值范围为 0~MaxData
- * input      : Nothing
- * output    : int
+ * Input      : Nothing
+ * Output    : 返回一个随机数
  ******************************************************/
 inline int BinaryTree::getARandNumberBetweenZeroAndMaxData()
 {
@@ -49,6 +49,9 @@ inline int BinaryTree::getARandNumberBetweenZeroAndMaxData()
 inline void BinaryTree::getRandRootData_creetTree()
 {
     int i;    //定义局部循环变量
+    //int* temp_rootdata;    //生成随机数列的暂存
+    rootdata = new int[DataCount];
+
     int randnumber;   //随机数缓存变量
 
     cout << "Random Sequence:" << endl;    //输出提示
@@ -72,6 +75,8 @@ inline void BinaryTree::getRandRootData_creetTree()
 
         //输出产生的随机数
         cout << randnumber << " ";
+        //将生成的随机数列存储
+        *(rootdata + i) = randnumber;
         //将生成的随机数插入二叉排序树
         TreeRootNode = insertNode(TreeRootNode, randnumber);
     }
@@ -315,7 +320,7 @@ inline void	BinaryTree::inordeTree(TreeNode* Tree)
     if (Tree != NULL)
     {
         inordeTree(Tree->left);    //遍历左子树
-        cout << Tree->getRoot() << "  ";    //输出节点值
+        cout << Tree->getRoot() << " ";    //输出节点值
         inordeTree(Tree->right);    //遍历右子树
     }
 }
@@ -448,11 +453,11 @@ inline TreeNode* BinaryTree::TreeFind(TreeNode* TreeNodefound, int to_find)
     }
     else
     {
-        if (TreeNodefound->getRoot() == to_find)    //根节点就是要查找的节点
+        if (TreeNodefound->root == to_find)    //根节点就是要查找的节点
         {
             return TreeNodefound;
         }
-        else if (TreeNodefound->getRoot() > to_find)    //查找左子树
+        else if (TreeNodefound->root > to_find)    //查找左子树
         {
             return TreeFind(TreeNodefound->left, to_find);
         }
@@ -474,8 +479,9 @@ inline TreeNode* BinaryTree::TreeFind(TreeNode* TreeNodefound, int to_find)
 inline void BinaryTree::TreeFind_TreeRootNode(int to_find)
 {
     TreeNode* TreeNodereturn;
-    TreeNodereturn = new TreeNode;
-    TreeNodereturn=TreeFind(TreeRootNode, to_find);
+    TreeNodereturn = TreeRootNode;
+    //TreeNodereturn = new TreeNode;
+    TreeNodereturn=TreeFind(TreeNodereturn, to_find);
 
     if (TreeNodereturn == NULL)
     {
@@ -487,7 +493,7 @@ inline void BinaryTree::TreeFind_TreeRootNode(int to_find)
         cout << "Found " << "Address：" << TreeNodereturn << "value：" << TreeNodereturn->getRoot() << endl;
     }
 
-    delete TreeNodereturn;
+    //delete TreeNodereturn;
 }
 
 /******************************************************
@@ -502,8 +508,8 @@ inline void BinaryTree::TreeFind_TreeRootNode(int to_find)
 *******************************************************/
 inline void BinaryTree::DeleteTreeNode(TreeNode* TreeNodeCopyTemp, int to_delete)
 {
-    TreeNode* L;
-    TreeNode* LL;
+    TreeNode* L = NULL;
+    TreeNode* LL = NULL;
 
     TreeNode* tempNode=NULL;    //要删除的节点
     tempNode = TreeNodeCopyTemp;
