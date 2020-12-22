@@ -30,6 +30,15 @@
     <ClCompile Include="homework.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="LinkHead.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkOperation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SeqStack.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TreeNode.h">
@@ -42,6 +51,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="homework.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkHead.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkOperation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SeqStack.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

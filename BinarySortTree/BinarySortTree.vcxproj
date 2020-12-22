@@ -142,13 +142,19 @@
     <ClCompile Include="BinaryTree.cpp" />
     <ClCompile Include="homework.cpp" />
     <ClCompile Include="Link.cpp" />
+    <ClCompile Include="LinkHead.cpp" />
+    <ClCompile Include="LinkOperation.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SeqStack.cpp" />
     <ClCompile Include="TreeNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="homework.h" />
     <ClInclude Include="Link.h" />
+    <ClInclude Include="LinkHead.h" />
+    <ClInclude Include="LinkOperation.h" />
+    <ClInclude Include="SeqStack.h" />
     <ClInclude Include="TreeNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
