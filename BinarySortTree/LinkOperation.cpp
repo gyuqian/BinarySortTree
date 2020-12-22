@@ -1,8 +1,16 @@
+/**************************************
+* File Name:         LinkOperate.cpp
+* Auther:				gyuqian
+* Data:					2020/12/22
+* Last-modified:		2020/12/22
+* File:					对邻接表一系列操作的封装
+***************************************/
 #include "LinkOperation.h"
 #include "SeqStack.cpp"
 #include "iostream"
 
 using namespace std;
+
 
 inline LinkOperation::LinkOperation()
 {
