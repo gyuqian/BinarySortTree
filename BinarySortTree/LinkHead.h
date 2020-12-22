@@ -6,7 +6,7 @@
 * File:					邻接表头节点
 ***************************************/
 #pragma once
-#include "Link.cpp"
+#include "Link.h"
 class LinkHead
 {
 	//

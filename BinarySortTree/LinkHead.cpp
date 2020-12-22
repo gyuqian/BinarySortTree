@@ -17,7 +17,7 @@ using namespace std;
 * Func:					构造函数，用于初始化
 *                          邻接表头节点
 ***************************************/
-inline LinkHead::LinkHead()
+LinkHead::LinkHead()
 {
 	vexData = 0;    //初始化表头
 	firarc = NULL;    //初始化表头链域

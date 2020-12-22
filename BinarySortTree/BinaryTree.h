@@ -7,7 +7,8 @@
 ************************************************/
 
 #pragma once
-#include"TreeNode.cpp"
+#include"TreeNode.h"
+
 class BinaryTree
 {
 	//

@@ -9,6 +9,8 @@
 #include "homework.h"
 #include <iostream>
 
+using namespace std;
+
 /***********************************************
 * Auther:				gyuqian
 * Data:					2020/12/15
@@ -27,7 +29,7 @@
 *Input:                  从键盘输入
 *Output:               输出到屏幕
 ************************************************/
-inline void homework::homework1()
+void homework::homework1()
 {
     Tree.GetMaxDataAndDataCountFromKeyboard();
 	Tree.getRandRootData_creetTree();
@@ -58,7 +60,7 @@ inline void homework::homework1()
 *                          在该函数中调用如下函数：
 *                          ChooseATree
 ************************************************/
-inline void homework::homework2()
+void homework::homework2()
 {
 	//克隆源二叉树
 	TreeClone.TreeClonde_paste(Tree.TreeRootNode);
@@ -96,7 +98,7 @@ inline void homework::homework2()
 *                          该函数中调用了如下函数：
 *                          GetAintNumFromKeyBoard
 ************************************************/
-inline void homework::ChooseATree()
+void homework::ChooseATree()
 {
 	//查找二叉树
 	int which_tree_to_find;
@@ -134,7 +136,7 @@ inline void homework::ChooseATree()
 * Input:                 从键盘输入
 *Output:                N/A
 ************************************************/
-inline void homework::GetAintNumFromKeyBoard(int &getNum)
+void homework::GetAintNumFromKeyBoard(int &getNum)
 {
 	cin.ignore(numeric_limits<std::streamsize>::max(),'\n');
 	cin >> getNum;

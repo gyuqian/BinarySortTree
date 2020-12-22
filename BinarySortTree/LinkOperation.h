@@ -7,10 +7,10 @@
 ***************************************/
 
 #pragma once
-#include "LinkHead.cpp"
-#include "Link.cpp"
-#include "TreeNode.cpp"
-#include "BinaryTree.cpp"
+#include "LinkHead.h"
+#include "Link.h"
+#include "TreeNode.h"
+#include "BinaryTree.h"
 
 const int MaxDataCount = 20;    //最大头节点数
 class LinkOperation

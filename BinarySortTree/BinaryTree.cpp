@@ -16,7 +16,7 @@ using namespace std;
  * Date   : 2020/12/16
  * Func   : 构造函数，初始化二叉树类中变量的初始值
  ******************************************************/
-inline BinaryTree::BinaryTree()
+BinaryTree::BinaryTree()
 {
     DataCount = 0;
     MaxData = 0;
@@ -33,7 +33,7 @@ inline BinaryTree::BinaryTree()
  * Input      : Nothing
  * Output    : 返回一个随机数
  ******************************************************/
-inline int BinaryTree::getARandNumberBetweenZeroAndMaxData()
+int BinaryTree::getARandNumberBetweenZeroAndMaxData()
 {
     return rand() % MaxData;    //生成随机数，数值范围0~MaxData
 }
@@ -46,7 +46,7 @@ inline int BinaryTree::getARandNumberBetweenZeroAndMaxData()
 * input       :NO INPUT
 * output     :NO OUTPUT
 *******************************************************/
-inline void BinaryTree::getRandRootData_creetTree()
+void BinaryTree::getRandRootData_creetTree()
 {
     int i;    //定义局部循环变量
     //int* temp_rootdata;    //生成随机数列的暂存
@@ -91,7 +91,7 @@ inline void BinaryTree::getRandRootData_creetTree()
 *               :max 用于赋值MaxData
 * output     :NO OUTPUT
 *******************************************************/
-inline void BinaryTree::GetMaxDataAndDataCount(int data, int max)
+void BinaryTree::GetMaxDataAndDataCount(int data, int max)
 {
     DataCount = data;    //赋值DataCount
     MaxData = max;    //赋值MaxData
@@ -104,7 +104,7 @@ inline void BinaryTree::GetMaxDataAndDataCount(int data, int max)
 * input       :From Keyboard
 * output     :NO OUTPUT
 *******************************************************/
-inline void BinaryTree::GetMaxDataAndDataCountFromKeyboard()
+void BinaryTree::GetMaxDataAndDataCountFromKeyboard()
 {
     GetDataCountFromKeyBoard();    //获取生成随机数列的数据个数
     GetMaxDataFromKeyBoard();    //获取生成随机数列数据的最大值
@@ -129,7 +129,7 @@ inline void BinaryTree::GetMaxDataAndDataCountFromKeyboard()
 * Input:                     From Keyboard
 * Output:                   输出提示
 *******************************************************/
-inline void BinaryTree::GetDataCountFromKeyBoard()
+void BinaryTree::GetDataCountFromKeyBoard()
 {
     cout << "Please input \"DataCount\"(0<DataCount<=20)" << endl;
     
@@ -161,7 +161,7 @@ inline void BinaryTree::GetDataCountFromKeyBoard()
 * Input:                     From Keyboard
 * Output:                   输出提示
 *******************************************************/
-inline void BinaryTree::GetMaxDataFromKeyBoard()
+void BinaryTree::GetMaxDataFromKeyBoard()
 {
     cout << "Please input \"MaxData\"(50<=MaxData<=100)" << endl;
     cin >> MaxData;
@@ -193,7 +193,7 @@ inline void BinaryTree::GetMaxDataFromKeyBoard()
 *                              TreeNodeinsert：需要操作的二叉树
 * Output:                   操作完成的二叉树
 *******************************************************/
-inline TreeNode* BinaryTree::insertNode(TreeNode* TreeNodeinsert, int a)
+TreeNode* BinaryTree::insertNode(TreeNode* TreeNodeinsert, int a)
 {
     if (TreeNodeinsert == NULL)    //二叉树为空
     {
@@ -221,7 +221,7 @@ inline TreeNode* BinaryTree::insertNode(TreeNode* TreeNodeinsert, int a)
 * Input:                     TreeNodeinsert：需要操作的二叉树
 * Output:                   high：树高
 *******************************************************/
-inline void BinaryTree::getTreeHigh(TreeNode* Tree, int& high)
+void BinaryTree::getTreeHigh(TreeNode* Tree, int& high)
 {
     if (Tree == NULL)    //空树
     {
@@ -255,7 +255,7 @@ inline void BinaryTree::getTreeHigh(TreeNode* Tree, int& high)
 * Output:                   向屏幕输出：
 *                               high：树高
 *******************************************************/
-inline void BinaryTree::getTreeHigh_TreeRootNode()
+void BinaryTree::getTreeHigh_TreeRootNode()
 {
     getTreeHigh(TreeRootNode, high);
 
@@ -271,7 +271,7 @@ inline void BinaryTree::getTreeHigh_TreeRootNode()
 * Output:                   向屏幕输出：
 *                               每一个叶子节点
 *******************************************************/
-inline void BinaryTree::outTreeLeaf(TreeNode* Tree)
+void BinaryTree::outTreeLeaf(TreeNode* Tree)
 {
     if (Tree == NULL)    //空树
     {
@@ -299,7 +299,7 @@ inline void BinaryTree::outTreeLeaf(TreeNode* Tree)
 * Output:                   向屏幕输出：
 *                               每一个叶子节点
 *******************************************************/
-inline void BinaryTree::outTreeLeaf_TreeRootNode()
+void BinaryTree::outTreeLeaf_TreeRootNode()
 {
     cout << "Leaf：" << endl;
     outTreeLeaf(TreeRootNode);
@@ -315,7 +315,7 @@ inline void BinaryTree::outTreeLeaf_TreeRootNode()
 * Output:                   向屏幕输出：
 *                               中序遍历结果
 *******************************************************/
-inline void	BinaryTree::inordeTree(TreeNode* Tree)
+void	BinaryTree::inordeTree(TreeNode* Tree)
 {
     if (Tree != NULL)
     {
@@ -335,7 +335,7 @@ inline void	BinaryTree::inordeTree(TreeNode* Tree)
 * Output:                   向屏幕输出：
 *                               中序遍历结果
 *******************************************************/
-inline void BinaryTree::inordeTree_TreeRootNode()
+void BinaryTree::inordeTree_TreeRootNode()
 {
     if (TreeRootNode != NULL)
     {
@@ -357,7 +357,7 @@ inline void BinaryTree::inordeTree_TreeRootNode()
 * Input:                     rootNode 要复制的源二叉树
 * Output:                   二叉树副本
 *******************************************************/
-inline TreeNode* BinaryTree::TreeClone(TreeNode* rootNode)
+TreeNode* BinaryTree::TreeClone(TreeNode* rootNode)
 {
     if (rootNode == NULL) //空树
     {
@@ -382,7 +382,7 @@ inline TreeNode* BinaryTree::TreeClone(TreeNode* rootNode)
 * Input:                     rootNode 要复制的源二叉树
 * Output:                   对象中的二叉树
 *******************************************************/
-inline void BinaryTree::TreeClonde_paste(TreeNode* rootNode)
+void BinaryTree::TreeClonde_paste(TreeNode* rootNode)
 {
     TreeRootNode = TreeClone(rootNode);
 }
@@ -396,7 +396,7 @@ inline void BinaryTree::TreeClonde_paste(TreeNode* rootNode)
 *                              TreeNodefound 要查找的树
 * Output:                   找到的父节点
 *******************************************************/
-inline TreeNode* BinaryTree::get_TreeNode_parnet(TreeNode* TreeNodefound, TreeNode* TreeNode_to_getParent)
+TreeNode* BinaryTree::get_TreeNode_parnet(TreeNode* TreeNodefound, TreeNode* TreeNode_to_getParent)
 {
     TreeNode* TreeNodefound_left = NULL;
     //TreeNodefound_left = new TreeNode;
@@ -445,7 +445,7 @@ inline TreeNode* BinaryTree::get_TreeNode_parnet(TreeNode* TreeNodefound, TreeNo
 *                              TreeNodefound 要查找的树
 * Output:                   寻找的结果
 *******************************************************/
-inline TreeNode* BinaryTree::TreeFind(TreeNode* TreeNodefound, int to_find)
+TreeNode* BinaryTree::TreeFind(TreeNode* TreeNodefound, int to_find)
 {
     if (TreeNodefound == NULL)    //空树
     {
@@ -476,7 +476,7 @@ inline TreeNode* BinaryTree::TreeFind(TreeNode* TreeNodefound, int to_find)
 * Input:                     to_find 要查找节点
 * Output:                   寻找的结果
 *******************************************************/
-inline void BinaryTree::TreeFind_TreeRootNode(int to_find)
+void BinaryTree::TreeFind_TreeRootNode(int to_find)
 {
     TreeNode* TreeNodereturn;
     TreeNodereturn = TreeRootNode;
@@ -506,7 +506,7 @@ inline void BinaryTree::TreeFind_TreeRootNode(int to_find)
 *                              临时拷贝
 * Output:                   NO OUTPUT
 *******************************************************/
-inline void BinaryTree::DeleteTreeNode(TreeNode* TreeNodeCopyTemp, int to_delete)
+void BinaryTree::DeleteTreeNode(TreeNode* TreeNodeCopyTemp, int to_delete)
 {
     TreeNode* L = NULL;
     TreeNode* LL = NULL;
@@ -633,7 +633,7 @@ inline void BinaryTree::DeleteTreeNode(TreeNode* TreeNodeCopyTemp, int to_delete
 * Input:                     to_delete 要查找节点
 * Output:                   NO OUTPUT
 *******************************************************/
-inline void BinaryTree::DeleteTreeNode_TreeRootNode(int to_delete)
+void BinaryTree::DeleteTreeNode_TreeRootNode(int to_delete)
 {
     DeleteTreeNode(TreeRootNode, to_delete);
 }

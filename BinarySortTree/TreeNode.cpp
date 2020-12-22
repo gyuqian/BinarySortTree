@@ -17,7 +17,7 @@
 * Last-modified:		2020/12/18
 * Func:					构造函数，初始化对象
 ************************************************/
-inline TreeNode::TreeNode()
+TreeNode::TreeNode()
 {
 	left = NULL;    //初始化左子树指针
 	right = NULL;    //初始化右子树指针
@@ -33,7 +33,7 @@ inline TreeNode::TreeNode()
 * 
 * Output:				NO OUTPUT
 ************************************************/
-inline void TreeNode::changeRoot(int noderoot)
+void TreeNode::changeRoot(int noderoot)
 {
 	root = noderoot;
 }
@@ -46,7 +46,7 @@ inline void TreeNode::changeRoot(int noderoot)
 * Input:					NO INPUT
 * Output:				root，返回根节点值
 ************************************************/
-inline int TreeNode::getRoot()
+int TreeNode::getRoot()
 {
 	return root;
 }

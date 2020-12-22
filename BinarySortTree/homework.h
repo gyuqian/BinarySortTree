@@ -7,8 +7,8 @@
 ************************************************/
 
 #pragma once
-#include "BinaryTree.cpp"
-#include "LinkOperation.cpp"
+#include "BinaryTree.h"
+#include "LinkOperation.h"
 
 class homework
 {

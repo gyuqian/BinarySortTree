@@ -6,13 +6,13 @@
 * File:					对邻接表一系列操作的封装
 ***************************************/
 #include "LinkOperation.h"
-#include "SeqStack.cpp"
+#include "SeqStack.h"
 #include "iostream"
 
 using namespace std;
 
 
-inline LinkOperation::LinkOperation()
+LinkOperation::LinkOperation()
 {
 	DirectGraph = NULL;
 
@@ -26,7 +26,7 @@ inline LinkOperation::LinkOperation()
     }
 }
 
-inline void LinkOperation::createDirectLink(BinaryTree Tree, int* TreeRootNode,int size_array)
+void LinkOperation::createDirectLink(BinaryTree Tree, int* TreeRootNode,int size_array)
 {
 	DirectGraph = new LinkHead[size_array];
 
@@ -73,7 +73,7 @@ inline void LinkOperation::createDirectLink(BinaryTree Tree, int* TreeRootNode,i
     }    //End for (int i = 0; i < size_array; i++)
 }
 
-inline void LinkOperation::DFS(int i)
+void LinkOperation::DFS(int i)
 {
     //访问第i个顶点
     cout << DirectGraph[i].firarc->data;
@@ -91,7 +91,7 @@ inline void LinkOperation::DFS(int i)
     }
 }
 
-inline void LinkOperation::sortTop(int size_array)
+void LinkOperation::sortTop(int size_array)
 {
     topo = new int[size_array];
     int i;
