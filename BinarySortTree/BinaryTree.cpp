@@ -471,7 +471,7 @@ inline TreeNode* BinaryTree::TreeFind(TreeNode* TreeNodefound, int to_find)
 /******************************************************
 * Author:                  gyuqian
 * Data:                     2020/12/16
-* Last-modified:		    2020/12/18
+* Last-modified:		    2020/12/22
 * Func:                     在对象二叉树中寻找节点
 * Input:                     to_find 要查找节点
 * Output:                   寻找的结果

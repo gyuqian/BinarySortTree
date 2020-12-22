@@ -39,7 +39,7 @@ inline void homework::homework1()
 /***********************************************
 * Auther:				gyuqian
 * Data:					2020/12/15
-* Last-modified:		2020/12/18
+* Last-modified:		2020/12/22
 * Func:					封装操作二，在封装操作一的基础上
 *                          实现：
 *							1.拷贝二叉树，生成二叉树副本
@@ -49,6 +49,8 @@ inline void homework::homework1()
 *                          查找结果
 *                          4.使用键盘输入想要删除的数，并输出
 *                          删除数据后的二叉排列
+*                          5.基于源二叉树创建有向图邻接表
+*                          6.输出5创建的邻接表的拓扑结构
 * Input:                 从键盘输入：
 *                          to_delete：要删除的数值
 *Output:               输出到屏幕
@@ -127,10 +129,10 @@ inline void homework::ChooseATree()
 /***********************************************
 * Auther:				gyuqian
 * Data:					2020/12/20
-* Last-modified:		2020/12/20
+* Last-modified:		2020/12/22
 * Func:					从键盘输入一个整型数据
 * Input:                 从键盘输入
-*Output:               getNum
+*Output:                N/A
 ************************************************/
 inline void homework::GetAintNumFromKeyBoard(int &getNum)
 {
