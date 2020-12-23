@@ -78,9 +78,11 @@ void homework::homework2()
 	//Tree.inordeTree_TreeRootNode();
 
 	cout << "Creat Link..." << endl;
-	LinkOpretion1.createDirectLink(Tree, Tree.rootdata, Tree.DataCount);
+	LinkOperation1.createDirectLink(Tree, Tree.rootdata, Tree.DataCount);
+	cout << "Adjacency Table" << endl;
+	LinkOperation1.PrintDirectLink(Tree.DataCount);
 	cout << "Topological Sort" << endl;
-	LinkOpretion1.sortTop(Tree.DataCount);
+	LinkOperation1.sortTop(Tree.DataCount);
 }
 
 /***********************************************

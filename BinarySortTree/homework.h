@@ -18,7 +18,7 @@ class homework
 public:
 	BinaryTree Tree;    //源树
 	BinaryTree TreeClone;    //克隆源树
-	LinkOperation LinkOpretion1;
+	LinkOperation LinkOperation1;
 	//
 	//公有函数
 	//

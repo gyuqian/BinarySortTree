@@ -28,6 +28,8 @@ public:
 	///创建邻接表
 	void createDirectLink(BinaryTree, int*, int);
 	//
+	///打印邻接表
+	void PrintDirectLink(int );
 	///深度优先遍历
 	void DFS(int);
 	//

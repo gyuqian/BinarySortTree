@@ -73,6 +73,23 @@ void LinkOperation::createDirectLink(BinaryTree Tree, int* TreeRootNode,int size
     }    //End for (int i = 0; i < size_array; i++)
 }
 
+void LinkOperation::PrintDirectLink(int size_array)
+{
+    //打印有向图的邻接表
+    cout << "Print a directed graph's Adjacency table :" << endl;
+    for (int i = 0; i < size_array; i++)
+    {
+        cout << DirectGraph[i].vexData;
+        Link* p = DirectGraph[i].firarc;
+        while (p != NULL)
+        {
+            cout << "->" << p->data;
+            p = p->next;
+        }
+        cout << endl;
+    }
+}
+
 void LinkOperation::DFS(int i)
 {
     //访问第i个顶点
