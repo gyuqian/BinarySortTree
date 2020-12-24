@@ -132,7 +132,7 @@ void BinaryTree::GetMaxDataAndDataCountFromKeyboard()
 *******************************************************/
 void BinaryTree::GetDataCountFromKeyBoard()
 {
-    cout << "Please input \"DataCount\"(0<DataCount<=20)" << endl;
+    cout << "Please input \"DataCount\"(10<DataCount<=20)" << endl;
 
     GetAintNumFromKeyBoard(DataCount);
     
@@ -148,10 +148,9 @@ void BinaryTree::GetDataCountFromKeyBoard()
 
     //    GetDataCountFromKeyBoard();
     //}
-    if (DataCount <0 || DataCount > 20)    //对输入数据的大小进行判断，如果不符合要求则重新输入
+    if (DataCount <10 || DataCount > 20)    //对输入数据的大小进行判断，如果不符合要求则重新输入
     {
         cout << "Error Input" << endl;
-
         GetDataCountFromKeyBoard();
     }
 }
