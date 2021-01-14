@@ -607,7 +607,7 @@ void BinaryTree::DeleteTreeNode(TreeNode* TreeNodeCopyTemp, int to_delete)
                     LL->right = L->right;
                 }*/
 
-            }    //End else    //要删除的节点有左右孩子，找左子树最大的节点代替此节点
+            }    //End else    //要删除的节点有左右孩子，找右子树最小的节点代替此节点
 
             tempNode = NULL;
         }// End if (tempNode->getRoot() == to_delete)    //删除节点
