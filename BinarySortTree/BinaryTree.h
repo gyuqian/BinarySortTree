@@ -3,11 +3,11 @@
 * Data:					2020/12/15
 * Last-modified:		2020/12/18
 * File:					对一棵二叉树操作的封装
-*                          本文件不单独使用
 ************************************************/
 
 #pragma once
-#include"TreeNode.cpp"
+#include"TreeNode.h"
+
 class BinaryTree
 {
 	//

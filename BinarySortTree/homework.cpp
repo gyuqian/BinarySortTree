@@ -2,12 +2,15 @@
 * Auther:				gyuqian
 * Data:					2020/12/15
 * Last-modified:		2020/12/18
-* File:					对一系列树操作的封装
+* File:					对一系列树、邻接表操作的封装
 ************************************************/
 
 #pragma once
 #include "homework.h"
+#include "getAn_int_input.h"
 #include <iostream>
+
+using namespace std;
 
 /***********************************************
 * Auther:				gyuqian
@@ -27,7 +30,7 @@
 *Input:                  从键盘输入
 *Output:               输出到屏幕
 ************************************************/
-inline void homework::homework1()
+void homework::homework1()
 {
     Tree.GetMaxDataAndDataCountFromKeyboard();
 	Tree.getRandRootData_creetTree();
@@ -58,7 +61,7 @@ inline void homework::homework1()
 *                          在该函数中调用如下函数：
 *                          ChooseATree
 ************************************************/
-inline void homework::homework2()
+void homework::homework2()
 {
 	//克隆源二叉树
 	TreeClone.TreeClonde_paste(Tree.TreeRootNode);
@@ -75,9 +78,11 @@ inline void homework::homework2()
 	//Tree.inordeTree_TreeRootNode();
 
 	cout << "Creat Link..." << endl;
-	LinkOpretion1.createDirectLink(Tree, Tree.rootdata, Tree.DataCount);
+	LinkOperation1.createDirectLink(Tree, Tree.rootdata, Tree.DataCount);
+	cout << "Adjacency Table" << endl;
+	LinkOperation1.PrintDirectLink(Tree.DataCount);
 	cout << "Topological Sort" << endl;
-	LinkOpretion1.sortTop(Tree.DataCount);
+	LinkOperation1.sortTop(Tree.DataCount);
 }
 
 /***********************************************
@@ -96,7 +101,7 @@ inline void homework::homework2()
 *                          该函数中调用了如下函数：
 *                          GetAintNumFromKeyBoard
 ************************************************/
-inline void homework::ChooseATree()
+void homework::ChooseATree()
 {
 	//查找二叉树
 	int which_tree_to_find;
@@ -134,15 +139,15 @@ inline void homework::ChooseATree()
 * Input:                 从键盘输入
 *Output:                N/A
 ************************************************/
-inline void homework::GetAintNumFromKeyBoard(int &getNum)
-{
-	cin.ignore(numeric_limits<std::streamsize>::max(),'\n');
-	cin >> getNum;
-
-	if (cin.fail() == 1)
-	{
-		cin.clear();
-		cout << "Please Input A Integer Number" << endl;
-		GetAintNumFromKeyBoard(getNum);
-	}
-}
+//void homework::GetAintNumFromKeyBoard(int &getNum)
+//{
+//	cin.ignore(numeric_limits<std::streamsize>::max(),'\n');
+//	cin >> getNum;
+//
+//	if (cin.fail() == 1)
+//	{
+//		cin.clear();
+//		cout << "Please Input A Integer Number" << endl;
+//		GetAintNumFromKeyBoard(getNum);
+//	}
+//}

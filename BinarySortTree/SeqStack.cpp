@@ -16,7 +16,7 @@
 * Func:					构造函数，用于初始化
 *                          堆栈
 ***************************************/
-inline SeqStack::SeqStack()
+SeqStack::SeqStack()
 {
 	data = NULL;
 	top = -1;

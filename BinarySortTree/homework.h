@@ -2,13 +2,12 @@
 * Auther:				gyuqian
 * Data:					2020/12/15
 * Last-modified:		2020/12/18
-* File:					对一系列树操作的封装，
-*							本文件不单独使用
+* File:					对一系列树、邻接表操作的封装
 ************************************************/
 
 #pragma once
-#include "BinaryTree.cpp"
-#include "LinkOperation.cpp"
+#include "BinaryTree.h"
+#include "LinkOperation.h"
 
 class homework
 {
@@ -18,7 +17,7 @@ class homework
 public:
 	BinaryTree Tree;    //源树
 	BinaryTree TreeClone;    //克隆源树
-	LinkOperation LinkOpretion1;
+	LinkOperation LinkOperation1;
 	//
 	//公有函数
 	//
@@ -31,5 +30,5 @@ public:
 	//
 	void ChooseATree();
 	//
-	void GetAintNumFromKeyBoard(int &);
+	/*void GetAintNumFromKeyBoard(int &);*/
 };
